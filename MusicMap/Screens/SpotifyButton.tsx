@@ -1,60 +1,39 @@
-// import React from 'react';
-// import { Button } from 'react-native';
-// import queryString from 'query-string';
-// import * as WebBrowser from 'expo-web-browser'; // Import WebBrowser
-
-// const SpotifyButton = () => {
-//     const client_id = 'bc62fd152f654b659bad4bf5b5c3a7fe';
-
-//     const redirect_uri = 'exp://10.66.72.10:8081/--/auth/callback'
-
-//     const generateRandomString = (length) => {
-//         const possibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-//         let text = '';
-//         for (let i = 0; i < length; i++) {
-//             text += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length));
-//         }
-//         return text;
-//     }
-
-//     const handleLoginPress = async () => {
-//         const state = generateRandomString(16);
-//         const scope = 'user-read-private user-read-email';
-//         const authUrl = 'https://accounts.spotify.com/authorize?' +
-//             queryString.stringify({
-//                 response_type: 'code',
-//                 client_id: 'bc62fd152f654b659bad4bf5b5c3a7fe',
-//                 scope: scope,
-//                 redirect_uri: redirect_uri,
-//                 state: state
-//             });
-
-//         // Use WebBrowser to open the URL inside the app
-//         await WebBrowser.openBrowserAsync(authUrl);
-//     }
-//     //console.long()
-//     return <Button title="Login with Spotify" onPress={handleLoginPress} />;
-// }
-
-// export default SpotifyButton;
-
-import * as React from 'react';
+// import * as React from 'react';
 import * as WebBrowser from 'expo-web-browser';
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 import { Button } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {
+    StyleSheet,
+    Text,
+    ImageBackground,
+    View,
+    TouchableOpacity,
+    Animated,
+    Easing,
+} from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 
-WebBrowser.maybeCompleteAuthSession();
-
-// Endpoint
-const discovery = {
-    authorizationEndpoint: 'https://accounts.spotify.com/authorize',
-    tokenEndpoint: 'https://accounts.spotify.com/api/token',
+type Props = {
+    onLoginSuccess: () => void;
 };
-const v = makeRedirectUri({
-    scheme: 'VibeMaps-login://callback',
-})
-console.log(v);
-export default function App() {
+
+const SpotifyButton: React.FC<Props> = ({ onLoginSuccess }) => {
+    const [isHovered, setHovered] = useState(false);
+    const tabScale = new Animated.Value(1);
+    WebBrowser.maybeCompleteAuthSession();
+
+    // Endpoint
+    const discovery = {
+        authorizationEndpoint: 'https://accounts.spotify.com/authorize',
+        tokenEndpoint: 'https://accounts.spotify.com/api/token',
+    };
+    const v = makeRedirectUri({
+        scheme: 'VibeMaps-login://callback',
+    })
+    console.log(v);
+    // export default function App() {
     const [request, response, promptAsync] = useAuthRequest(
         {
             clientId: 'bc62fd152f654b659bad4bf5b5c3a7fe',
@@ -72,16 +51,121 @@ export default function App() {
     React.useEffect(() => {
         if (response?.type === 'success') {
             const { code } = response.params;
+            console.log("good shit");
+            onLoginSuccess();
         }
     }, [response]);
 
+    const handleTabPressIn = () => {
+        Animated.timing(tabScale, {
+            toValue: 1.2, // Increase the size to 1.2 times
+            duration: 300, // Animation duration in milliseconds
+            easing: Easing.linear, // You can adjust the easing function as needed
+            useNativeDriver: false, // Required for some animations
+        }).start();
+    };
+
+    const handleTabPressOut = () => {
+        Animated.timing(tabScale, {
+            toValue: 1, // Return to the original size
+            duration: 300,
+            easing: Easing.linear,
+            useNativeDriver: false,
+        }).start();
+    };
     return (
-        <Button
-            disabled={!request}
-            title="Login"
-            onPress={() => {
-                promptAsync();
-            }}
-        />
+        <ImageBackground
+            source={require("../assets/D07CCB56-715C-475A-AA17-45EB9BCC2323.jpeg")}
+            style={styles.authContainer}
+        >
+            <View style={styles.overlay}>
+                <Text style={styles.title}>SIGN IN WITH</Text>
+                <TouchableOpacity
+                    style={[
+                        styles.tab,
+                        { transform: [{ scale: isHovered ? tabScale : 1 }] },
+                    ]}
+                    onPressIn={() => {
+                        setHovered(true);
+                        handleTabPressIn();
+                    }}
+                    onPressOut={() => {
+                        setHovered(false);
+                        handleTabPressOut();
+                    }}
+                    onPress={() => {
+                        if (request) {
+                            promptAsync();
+                        }
+                    }}
+                >
+                    <View style={styles.spotifyContainer}>
+                        <Entypo name="spotify" size={24} color="black" />
+                    </View>
+                    <Text style={styles.text}>Spotify</Text>
+                </TouchableOpacity>
+            </View>
+        </ImageBackground>
     );
-}
+};
+
+export default SpotifyButton;
+
+const styles = StyleSheet.create({
+    authContainer: {
+        flex: 1,
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+
+    overlay: {
+        flex: 1,
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "rgba(34, 34, 23, 0.6)", // Overlay with 30% opacity
+    },
+    title: {
+        fontSize: 20,
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center",
+    },
+    tab: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 10,
+        width: 320,
+        height: 50,
+        borderRadius: 10,
+        borderWidth: 2,
+        borderColor: "white",
+        zIndex: 2,
+        margin: 20,
+        padding: 4,
+    },
+    appleMusicContainer: {
+        backgroundColor: "#fc3c44",
+        padding: 7,
+        borderRadius: 6,
+        width: 40,
+        height: 40,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    spotifyContainer: {
+        backgroundColor: "#1ed760",
+        padding: 7,
+        borderRadius: 6,
+        width: 40,
+        height: 40,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    text: {
+        color: "white",
+        fontWeight: "bold",
+        fontSize: 18,
+    },
+});

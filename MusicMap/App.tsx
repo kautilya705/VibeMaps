@@ -1,13 +1,16 @@
-import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Auth from "./Screens/Auth";
 import Navbar from "./Components/Navbar";
+import SpotifyButton from './Screens/SpotifyButton';
 
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);  // Create state to track if user is logged in
+
   return (
     <View style={styles.container}>
-      <Auth />
-      <Navbar />
+      {isLoggedIn ? <Navbar /> : <Auth onLoginSuccess={() => setIsLoggedIn(true)} />
+      }
     </View>
   );
 }

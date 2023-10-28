@@ -1,12 +1,16 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
-import SpotifyButton from './SpotifyButton';  // Ensure the path is correct if your files are in different directories
+import SpotifyButton from './SpotifyButton';
 
-const App = () => {
+type Props = {
+  onLoginSuccess: () => void;
+};
+
+const Auth: React.FC<Props> = ({ onLoginSuccess }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <SpotifyButton />
+        <SpotifyButton onLoginSuccess={onLoginSuccess} />
       </View>
     </SafeAreaView>
   );
@@ -24,4 +28,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Auth;
