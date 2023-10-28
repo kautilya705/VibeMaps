@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as WebBrowser from 'expo-web-browser';
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 import { Button, Text } from 'react-native';
+import * as FileSystem from 'expo-file-system';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -23,6 +24,33 @@ interface Track {
 interface RecentlyPlayedItem {
     track: Track;
 }
+const fileURI = FileSystem.documentDirectory + 'data.jsonl';
+
+// const appendDataToFile = async (email, songs) => {
+//     try {
+//         // Get the path to the file
+//         console.log('Attempting to append data...');
+//         const fileUri = FileSystem.documentDirectory + 'data.jsonl';
+
+//         // Construct the data to be appended
+//         const newData = {
+//             email: email,
+//             songs: songs.map(item => item.track.name) // Extract song names from the songs array
+//         };
+
+//         console.log('Email:', email);
+//         console.log('Songs:', newData.songs);
+
+//         const stringifiedData = JSON.stringify(newData) + '\n';
+
+//         // Append the new data to the file
+//         await FileSystem.appendAsStringAsync(fileUri, stringifiedData, { encoding: FileSystem.EncodingType.UTF8 });
+
+//         console.log('Data appended successfully!');
+//     } catch (error) {
+//         console.error('Error appending data:', error.message);
+//     }
+// };
 
 export default function App() {
     const [recentlyPlayed, setRecentlyPlayed] = React.useState<RecentlyPlayedItem[]>([]);
@@ -39,11 +67,11 @@ export default function App() {
         },
         discovery
     );
-
+    const [userEmail, setUserEmail] = React.useState(null);
     React.useEffect(() => {
         if (response?.type === 'success') {
             const { code } = response.params;
-    
+        
             fetch(discovery.tokenEndpoint, {
                 method: 'POST',
                 headers: {
@@ -55,23 +83,45 @@ export default function App() {
             .then(data => {
                 const accessToken = data.access_token;
                 
+                // Fetch user's email
+                return fetch('https://api.spotify.com/v1/me', {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                })
+                .then(res => res.json())
+                .then(userData => {
+                    const email = userData.email;
+                    setUserEmail(email);
+                    return { accessToken, email };
+                })                
+            })
+            .then(({ accessToken, userEmail }) => {
+                // Use both accessToken and userEmail in this block
+        
                 // Fetch user's recently played tracks
                 return fetch('https://api.spotify.com/v1/me/player/recently-played', {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
                     },
+                })
+                .then(res => res.json())
+                .then(recentlyPlayedData => {
+                    setRecentlyPlayed(recentlyPlayedData.items);
+                    
+                    // Append user's email and recently played tracks to the file
+                    const songs = recentlyPlayedData.items.map(item => item.track.name);
+                    // appendDataToFile(userEmail, songs);
                 });
-            })
-            .then(res => res.json())
-            .then(recentlyPlayedData => {
-                setRecentlyPlayed(recentlyPlayedData.items);
             })
             .catch(error => {
                 console.error('Error:', error.message);
             });
         }
-    }, [response]);
-    
+    }, [response]);     
+    //var data_to_append = {"email": email, "songs": songs}
+
+
     return (
         <>
             <Button
@@ -81,6 +131,7 @@ export default function App() {
                     promptAsync();
                 }}
             />
+            {userEmail && <Text>Email: {userEmail}</Text>}
             {recentlyPlayed.length > 0 && (
                 <>
                     <Text>Recently Played Tracks:</Text>
@@ -92,5 +143,5 @@ export default function App() {
                 </>
             )}
         </>
-    );
+    );    
 }
