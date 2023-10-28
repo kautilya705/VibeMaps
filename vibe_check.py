@@ -1,6 +1,7 @@
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import requests
+import json
 
 # Spotify credentials
 cid = 'b1bdb7c6d13b45f89ac50153b26e6b8d'
@@ -43,6 +44,9 @@ def get_musixmatch_track_id(track_name, artist_name, api_key):
             return track_list[0]['track']['track_id']
     return None
 
+track_list = []
+file_name = "track_data.json"
+
 # Loop through tracks
 for track in results["items"]:
     track_uri = track["track"]["uri"]
@@ -53,14 +57,19 @@ for track in results["items"]:
     musixmatch_track_id = get_musixmatch_track_id(track_name, artist_name, api_key)
     lyrics = get_lyrics(musixmatch_track_id, api_key)
 
+    track_info = {
+        "Track Name": track_name,
+        "Artist": artist_name,
+        "Album": album,
+        "Popularity": track_pop,
+        "Lyrics": lyrics,
+        "Audio Features": sp.audio_features(track_uri)[0]
+    }
+
     if musixmatch_track_id:
-        lyrics = get_lyrics(musixmatch_track_id, api_key)
-        print(f'Track Name: {track_name}')
-        print(f'Artist: {artist_name}')
-        print(f'Album: {album}')
-        print(f'Popularity: {track_pop}')
-        print(f'Lyrics: {lyrics}')
-        print('---')
-        print(sp.audio_features(track_uri)[0])
+        track_list.append(track_info)
     else:
         print(f'Could not find Musixmatch track ID for {track_name} by {artist_name}')
+
+with open(file_name, "w") as json_file:
+    json.dump(track_list, json_file)
