@@ -38,7 +38,6 @@ def get_musixmatch_track_id(track_name, artist_name, api_key):
     return None
 
 track_list = []
-file_name = "track_data.jsonl"
 
 # Loop through tracks
 def process_playlist(playlist_link, api_key, file_name):
@@ -55,9 +54,7 @@ def process_playlist(playlist_link, api_key, file_name):
             musixmatch_track_id = get_musixmatch_track_id(track_name, artist_name, api_key)
             lyrics = get_lyrics(musixmatch_track_id, api_key)
 
-            track_info = {
-                "text": f"Track Name: {track_name}, Artist: {artist_name}, Album: {album}, Popularity: {track_pop}, Lyrics: {lyrics}",
-                "Audio Features": sp.audio_features(track_uri)[0]
+            track_info = {"text": f"Track Name: {track_name}, Artist: {artist_name}, Album: {album}, Popularity: {track_pop}, Lyrics: {lyrics}",
             }
 
             if musixmatch_track_id:
@@ -66,7 +63,7 @@ def process_playlist(playlist_link, api_key, file_name):
                 print(f'Could not find Musixmatch track ID for {track_name} by {artist_name}')
 
 # Example usage:
-api_key = 'b279957df7339b654624d68bea207c77'
+api_key = '4aa7a701b559301dd19e95b0f7d917d7'
 playlist_links = [
     "https://open.spotify.com/playlist/4GZT3MbZ4IwjtIxKuYerfu?si=e5256b6a87374b1d",
     "https://open.spotify.com/playlist/4GZT3MbZ4IwjtIxKuYerfu?si=a0524174111a4b0f",
@@ -76,7 +73,7 @@ playlist_links = [
     "https://open.spotify.com/playlist/37i9dQZEVXbNG2KDcFcKOF?si=80dd5d16f063409e"
 ]
 
-file_name = "track_data.jsonl"
+file_name = "second_bruh.jsonl"
 
 for playlist_link in playlist_links:
     process_playlist(playlist_link, api_key, file_name)
