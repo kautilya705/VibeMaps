@@ -21,7 +21,7 @@ fine_tune = together.Finetune.create(
 
 fine_tune_id = fine_tune['id']
 
-print(together.Finetune.retrieve(fine_tune_id=fine_tune_id)) # retrieves information on finetune event
+#print(together.Finetune.retrieve(fine_tune_id=fine_tune_id)) # retrieves information on finetune event
 print(together.Finetune.get_job_status(fine_tune_id=fine_tune_id)) # pending, running, completed
 print(together.Finetune.is_final_model_available(fine_tune_id=fine_tune_id)) # True, False
 print(together.Finetune.get_checkpoints(fine_tune_id=fine_tune_id)) # list of checkpoints
