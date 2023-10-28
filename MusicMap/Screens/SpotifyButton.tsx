@@ -3,6 +3,8 @@ import * as WebBrowser from 'expo-web-browser';
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 import { Button, Text } from 'react-native';
 import * as FileSystem from 'expo-file-system';
+import tasks from './convex/tasks';
+import { uploadNewUser } from '../convex/tasks';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -119,8 +121,13 @@ export default function App() {
             });
         }
     }, [response]);     
-    //var data_to_append = {"email": email, "songs": songs}
 
+    // CALL CONVEX TO UPLOAD DATA (username + list of songs)
+    const songsList = recentlyPlayed.map(item => {
+        return `${item.track.name} by ${item.track.artists.map(artist => artist.name).join(', ')}`;
+    });
+    
+    uploadNewUser(userEmail, songsList)
 
     return (
         <>
