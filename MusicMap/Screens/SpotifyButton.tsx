@@ -51,7 +51,6 @@ const SpotifyButton: React.FC<Props> = ({ onLoginSuccess }) => {
     React.useEffect(() => {
         if (response?.type === 'success') {
             const { code } = response.params;
-            console.log("good shit");
             onLoginSuccess();
         }
     }, [response]);
@@ -76,7 +75,8 @@ const SpotifyButton: React.FC<Props> = ({ onLoginSuccess }) => {
     return (
         <ImageBackground
             source={require("../assets/D07CCB56-715C-475A-AA17-45EB9BCC2323.jpeg")}
-            style={styles.authContainer}
+            style={{ ...styles.authContainer, backgroundColor: "#000000" }} // apply backgroundColor here
+            resizeMode="cover"
         >
             <View style={styles.overlay}>
                 <Text style={styles.title}>SIGN IN WITH</Text>

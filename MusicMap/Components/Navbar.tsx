@@ -66,13 +66,14 @@ const styles = StyleSheet.create({
   navbarContainer: {
     backgroundColor: "rgba(255, 255, 255, 0.0)",
     position: "absolute",
-    bottom: 0,
+    bottom: 20,
     display: "flex",
     alignItems: "center",
     flexDirection: "row",
     width: "100%",
     justifyContent: "space-evenly",
     height: 50,
+    zIndex: 10,
   },
   navbarItem: {
     alignItems: "center",
