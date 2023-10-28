@@ -1,0 +1,45 @@
+{
+    "os": "Windows-10-10.0.19041-SP0",
+    "python": "3.8.5",
+    "heartbeatAt": "2023-10-28T06:25:06.102151",
+    "startedAt": "2023-10-28T06:25:05.534507",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "together_llm.py",
+    "codePathLocal": "together_llm.py",
+    "codePath": "together_llm.py",
+    "git": {
+        "remote": "https://github.com/kautilya705/VibeMaps",
+        "commit": "9d85b294e84aae7310e87d00569988dfe54f2fe3"
+    },
+    "email": "drishtigupta@berkeley.edu",
+    "root": "C:/Users/Drishti/calhacks_llm/VibeMaps",
+    "host": "WINDOWS-F4M9L6K",
+    "username": "Drishti",
+    "executable": "C:\\Users\\Drishti\\AppData\\Local\\Programs\\PythonCodingPack\\python.exe",
+    "cpu_count": 2,
+    "cpu_count_logical": 4,
+    "cpu_freq": {
+        "current": 2801.0,
+        "min": 0.0,
+        "max": 2801.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2801.0,
+            "min": 0.0,
+            "max": 2801.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 97.65624618530273,
+            "used": 88.84111404418945
+        }
+    },
+    "memory": {
+        "total": 7.894184112548828
+    }
+}

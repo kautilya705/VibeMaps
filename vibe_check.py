@@ -22,13 +22,6 @@ def get_lyrics(track_id, api_key):
     else:
         return None
 
-# Musixmatch API key
-#api_key = '8745475dda5f2b686665500744dfd529'
-#playlist_link = "https://open.spotify.com/playlist/4GZT3MbZ4IwjtIxKuYerfu?si=e5256b6a87374b1d"
-#playlist_id = playlist_link.split("/")[-1].split("?")[0]
-
-#results = sp.playlist_tracks(playlist_id)
-
 # Function to get Musixmatch track ID
 def get_musixmatch_track_id(track_name, artist_name, api_key):
     url = f'https://api.musixmatch.com/ws/1.1/track.search?q_track={track_name}&q_artist={artist_name}&apikey={api_key}'

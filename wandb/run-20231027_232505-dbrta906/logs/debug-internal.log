@@ -1,0 +1,173 @@
+2023-10-27 23:25:05,549 INFO    StreamThr :16476 [internal.py:wandb_internal():86] W&B internal server running at pid: 16476, started at: 2023-10-27 23:25:05.549110
+2023-10-27 23:25:05,549 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: status
+2023-10-27 23:25:05,556 INFO    WriterThread:16476 [datastore.py:open_for_write():85] open: C:\Users\Drishti\calhacks_llm\VibeMaps\wandb\run-20231027_232505-dbrta906\run-dbrta906.wandb
+2023-10-27 23:25:05,556 DEBUG   SenderThread:16476 [sender.py:send():380] send: header
+2023-10-27 23:25:05,630 DEBUG   SenderThread:16476 [sender.py:send():380] send: run
+2023-10-27 23:25:05,936 INFO    SenderThread:16476 [dir_watcher.py:__init__():211] watching files in: C:\Users\Drishti\calhacks_llm\VibeMaps\wandb\run-20231027_232505-dbrta906\files
+2023-10-27 23:25:05,936 INFO    SenderThread:16476 [sender.py:_start_run_threads():1122] run started: dbrta906 with start time 1698474305.54911
+2023-10-27 23:25:05,957 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: check_version
+2023-10-27 23:25:05,957 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: check_version
+2023-10-27 23:25:06,066 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: run_start
+2023-10-27 23:25:06,086 DEBUG   HandlerThread:16476 [system_info.py:__init__():32] System info init
+2023-10-27 23:25:06,086 DEBUG   HandlerThread:16476 [system_info.py:__init__():47] System info init done
+2023-10-27 23:25:06,086 INFO    HandlerThread:16476 [system_monitor.py:start():194] Starting system monitor
+2023-10-27 23:25:06,086 INFO    SystemMonitor:16476 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2023-10-27 23:25:06,086 INFO    HandlerThread:16476 [system_monitor.py:probe():214] Collecting system info
+2023-10-27 23:25:06,097 DEBUG   HandlerThread:16476 [system_info.py:probe():196] Probing system
+2023-10-27 23:25:06,097 INFO    SystemMonitor:16476 [interfaces.py:start():190] Started cpu monitoring
+2023-10-27 23:25:06,102 INFO    SystemMonitor:16476 [interfaces.py:start():190] Started disk monitoring
+2023-10-27 23:25:06,111 INFO    SystemMonitor:16476 [interfaces.py:start():190] Started memory monitoring
+2023-10-27 23:25:06,118 INFO    SystemMonitor:16476 [interfaces.py:start():190] Started network monitoring
+2023-10-27 23:25:06,134 DEBUG   HandlerThread:16476 [system_info.py:_probe_git():181] Probing git
+2023-10-27 23:25:06,267 DEBUG   HandlerThread:16476 [system_info.py:_probe_git():189] Probing git done
+2023-10-27 23:25:06,267 DEBUG   HandlerThread:16476 [system_info.py:probe():244] Probing system done
+2023-10-27 23:25:06,267 DEBUG   HandlerThread:16476 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.19041-SP0', 'python': '3.8.5', 'heartbeatAt': '2023-10-28T06:25:06.102151', 'startedAt': '2023-10-28T06:25:05.534507', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'together_llm.py', 'codePathLocal': 'together_llm.py', 'codePath': 'together_llm.py', 'git': {'remote': 'https://github.com/kautilya705/VibeMaps', 'commit': '9d85b294e84aae7310e87d00569988dfe54f2fe3'}, 'email': 'drishtigupta@berkeley.edu', 'root': 'C:/Users/Drishti/calhacks_llm/VibeMaps', 'host': 'WINDOWS-F4M9L6K', 'username': 'Drishti', 'executable': 'C:\\Users\\Drishti\\AppData\\Local\\Programs\\PythonCodingPack\\python.exe', 'cpu_count': 2, 'cpu_count_logical': 4, 'cpu_freq': {'current': 2801.0, 'min': 0.0, 'max': 2801.0}, 'cpu_freq_per_core': [{'current': 2801.0, 'min': 0.0, 'max': 2801.0}], 'disk': {'/': {'total': 97.65624618530273, 'used': 88.84111404418945}}, 'memory': {'total': 7.894184112548828}}
+2023-10-27 23:25:06,267 INFO    HandlerThread:16476 [system_monitor.py:probe():224] Finished collecting system info
+2023-10-27 23:25:06,267 INFO    HandlerThread:16476 [system_monitor.py:probe():227] Publishing system info
+2023-10-27 23:25:06,267 DEBUG   HandlerThread:16476 [system_info.py:_save_pip():52] Saving list of pip packages installed into the current environment
+2023-10-27 23:25:06,276 DEBUG   HandlerThread:16476 [system_info.py:_save_pip():68] Saving pip packages done
+2023-10-27 23:25:06,276 INFO    HandlerThread:16476 [system_monitor.py:probe():229] Finished publishing system info
+2023-10-27 23:25:06,284 DEBUG   SenderThread:16476 [sender.py:send():380] send: files
+2023-10-27 23:25:06,284 INFO    SenderThread:16476 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-10-27 23:25:06,301 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: stop_status
+2023-10-27 23:25:06,303 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: stop_status
+2023-10-27 23:25:06,306 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: internal_messages
+2023-10-27 23:25:06,430 DEBUG   SenderThread:16476 [sender.py:send():380] send: telemetry
+2023-10-27 23:25:06,430 DEBUG   SenderThread:16476 [sender.py:send():380] send: exit
+2023-10-27 23:25:06,430 INFO    SenderThread:16476 [sender.py:send_exit():585] handling exit code: 0
+2023-10-27 23:25:06,430 INFO    SenderThread:16476 [sender.py:send_exit():587] handling runtime: 0
+2023-10-27 23:25:06,430 INFO    SenderThread:16476 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-27 23:25:06,436 INFO    SenderThread:16476 [sender.py:send_exit():593] send defer
+2023-10-27 23:25:06,436 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: defer
+2023-10-27 23:25:06,436 INFO    HandlerThread:16476 [handler.py:handle_request_defer():172] handle defer: 0
+2023-10-27 23:25:06,436 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: defer
+2023-10-27 23:25:06,436 INFO    SenderThread:16476 [sender.py:send_request_defer():609] handle sender defer: 0
+2023-10-27 23:25:06,436 INFO    SenderThread:16476 [sender.py:transition_state():613] send defer: 1
+2023-10-27 23:25:06,436 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: defer
+2023-10-27 23:25:06,436 INFO    HandlerThread:16476 [handler.py:handle_request_defer():172] handle defer: 1
+2023-10-27 23:25:06,436 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: defer
+2023-10-27 23:25:06,436 INFO    SenderThread:16476 [sender.py:send_request_defer():609] handle sender defer: 1
+2023-10-27 23:25:06,436 INFO    SenderThread:16476 [sender.py:transition_state():613] send defer: 2
+2023-10-27 23:25:06,436 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: defer
+2023-10-27 23:25:06,436 INFO    HandlerThread:16476 [handler.py:handle_request_defer():172] handle defer: 2
+2023-10-27 23:25:06,436 INFO    HandlerThread:16476 [system_monitor.py:finish():203] Stopping system monitor
+2023-10-27 23:25:06,436 DEBUG   SystemMonitor:16476 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2023-10-27 23:25:06,436 DEBUG   SystemMonitor:16476 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2023-10-27 23:25:06,436 DEBUG   SystemMonitor:16476 [system_monitor.py:_start():183] Publishing last batch of metrics
+2023-10-27 23:25:06,436 INFO    HandlerThread:16476 [interfaces.py:finish():202] Joined cpu monitor
+2023-10-27 23:25:06,436 INFO    HandlerThread:16476 [interfaces.py:finish():202] Joined disk monitor
+2023-10-27 23:25:06,436 INFO    HandlerThread:16476 [interfaces.py:finish():202] Joined memory monitor
+2023-10-27 23:25:06,436 INFO    HandlerThread:16476 [interfaces.py:finish():202] Joined network monitor
+2023-10-27 23:25:06,436 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: defer
+2023-10-27 23:25:06,436 INFO    SenderThread:16476 [sender.py:send_request_defer():609] handle sender defer: 2
+2023-10-27 23:25:06,436 INFO    SenderThread:16476 [sender.py:transition_state():613] send defer: 3
+2023-10-27 23:25:06,436 DEBUG   SenderThread:16476 [sender.py:send():380] send: stats
+2023-10-27 23:25:06,436 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: defer
+2023-10-27 23:25:06,436 INFO    HandlerThread:16476 [handler.py:handle_request_defer():172] handle defer: 3
+2023-10-27 23:25:06,436 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: defer
+2023-10-27 23:25:06,436 INFO    SenderThread:16476 [sender.py:send_request_defer():609] handle sender defer: 3
+2023-10-27 23:25:06,436 INFO    SenderThread:16476 [sender.py:transition_state():613] send defer: 4
+2023-10-27 23:25:06,436 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: defer
+2023-10-27 23:25:06,436 INFO    HandlerThread:16476 [handler.py:handle_request_defer():172] handle defer: 4
+2023-10-27 23:25:06,436 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: defer
+2023-10-27 23:25:06,436 INFO    SenderThread:16476 [sender.py:send_request_defer():609] handle sender defer: 4
+2023-10-27 23:25:06,436 INFO    SenderThread:16476 [sender.py:transition_state():613] send defer: 5
+2023-10-27 23:25:06,436 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: defer
+2023-10-27 23:25:06,436 INFO    HandlerThread:16476 [handler.py:handle_request_defer():172] handle defer: 5
+2023-10-27 23:25:06,436 DEBUG   SenderThread:16476 [sender.py:send():380] send: summary
+2023-10-27 23:25:06,436 INFO    SenderThread:16476 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-10-27 23:25:06,436 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: defer
+2023-10-27 23:25:06,436 INFO    SenderThread:16476 [sender.py:send_request_defer():609] handle sender defer: 5
+2023-10-27 23:25:06,436 INFO    SenderThread:16476 [sender.py:transition_state():613] send defer: 6
+2023-10-27 23:25:06,436 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: defer
+2023-10-27 23:25:06,436 INFO    HandlerThread:16476 [handler.py:handle_request_defer():172] handle defer: 6
+2023-10-27 23:25:06,446 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: defer
+2023-10-27 23:25:06,446 INFO    SenderThread:16476 [sender.py:send_request_defer():609] handle sender defer: 6
+2023-10-27 23:25:06,451 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: status_report
+2023-10-27 23:25:06,556 INFO    SenderThread:16476 [sender.py:transition_state():613] send defer: 7
+2023-10-27 23:25:06,556 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: defer
+2023-10-27 23:25:06,556 INFO    HandlerThread:16476 [handler.py:handle_request_defer():172] handle defer: 7
+2023-10-27 23:25:06,556 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: defer
+2023-10-27 23:25:06,556 INFO    SenderThread:16476 [sender.py:send_request_defer():609] handle sender defer: 7
+2023-10-27 23:25:06,556 INFO    SenderThread:16476 [sender.py:transition_state():613] send defer: 8
+2023-10-27 23:25:06,561 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: defer
+2023-10-27 23:25:06,561 INFO    HandlerThread:16476 [handler.py:handle_request_defer():172] handle defer: 8
+2023-10-27 23:25:06,561 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: defer
+2023-10-27 23:25:06,561 INFO    SenderThread:16476 [sender.py:send_request_defer():609] handle sender defer: 8
+2023-10-27 23:25:06,561 INFO    SenderThread:16476 [job_builder.py:build():281] Attempting to build job artifact
+2023-10-27 23:25:06,561 INFO    SenderThread:16476 [job_builder.py:_get_source_type():393] is repo sourced job
+2023-10-27 23:25:06,647 INFO    SenderThread:16476 [job_builder.py:build():369] adding wandb-job metadata file
+2023-10-27 23:25:06,671 INFO    SenderThread:16476 [sender.py:transition_state():613] send defer: 9
+2023-10-27 23:25:06,671 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: defer
+2023-10-27 23:25:06,672 DEBUG   SenderThread:16476 [sender.py:send():380] send: artifact
+2023-10-27 23:25:06,672 INFO    HandlerThread:16476 [handler.py:handle_request_defer():172] handle defer: 9
+2023-10-27 23:25:06,737 INFO    wandb-upload_0:16476 [upload_job.py:push():131] Uploaded file C:\Users\Drishti\AppData\Local\Temp\tmppi8a_w8bwandb\ciiinfoo-wandb-metadata.json
+2023-10-27 23:25:06,942 INFO    Thread-16 :16476 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\Drishti\calhacks_llm\VibeMaps\wandb\run-20231027_232505-dbrta906\files\config.yaml
+2023-10-27 23:25:06,942 INFO    Thread-16 :16476 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\Drishti\calhacks_llm\VibeMaps\wandb\run-20231027_232505-dbrta906\files\wandb-metadata.json
+2023-10-27 23:25:06,947 INFO    Thread-16 :16476 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\Drishti\calhacks_llm\VibeMaps\wandb\run-20231027_232505-dbrta906\files\wandb-summary.json
+2023-10-27 23:25:06,951 INFO    Thread-16 :16476 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\Drishti\calhacks_llm\VibeMaps\wandb\run-20231027_232505-dbrta906\files\requirements.txt
+2023-10-27 23:25:07,327 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: poll_exit
+2023-10-27 23:25:07,526 INFO    wandb-upload_1:16476 [upload_job.py:push():89] Uploaded file C:\Users\Drishti\AppData\Local\wandb\wandb\artifacts\staging\tmpjnv_g471
+2023-10-27 23:25:07,538 INFO    wandb-upload_0:16476 [upload_job.py:push():89] Uploaded file C:\Users\Drishti\AppData\Local\wandb\wandb\artifacts\staging\tmpzatdx06y
+2023-10-27 23:25:08,477 INFO    SenderThread:16476 [sender.py:send_artifact():1456] sent artifact job-https___github.com_kautilya705_VibeMaps_together_llm.py - {'id': 'QXJ0aWZhY3Q6NjE5Mzk5NDAw', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjExMDU5NjIzMw==', 'latestArtifact': None}}
+2023-10-27 23:25:08,477 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: defer
+2023-10-27 23:25:08,477 INFO    SenderThread:16476 [sender.py:send_request_defer():609] handle sender defer: 9
+2023-10-27 23:25:08,477 INFO    SenderThread:16476 [dir_watcher.py:finish():358] shutting down directory watcher
+2023-10-27 23:25:08,982 INFO    SenderThread:16476 [dir_watcher.py:finish():388] scan: C:\Users\Drishti\calhacks_llm\VibeMaps\wandb\run-20231027_232505-dbrta906\files
+2023-10-27 23:25:08,982 INFO    SenderThread:16476 [dir_watcher.py:finish():402] scan save: C:\Users\Drishti\calhacks_llm\VibeMaps\wandb\run-20231027_232505-dbrta906\files\config.yaml config.yaml
+2023-10-27 23:25:08,982 INFO    SenderThread:16476 [dir_watcher.py:finish():402] scan save: C:\Users\Drishti\calhacks_llm\VibeMaps\wandb\run-20231027_232505-dbrta906\files\requirements.txt requirements.txt
+2023-10-27 23:25:08,987 INFO    SenderThread:16476 [dir_watcher.py:finish():402] scan save: C:\Users\Drishti\calhacks_llm\VibeMaps\wandb\run-20231027_232505-dbrta906\files\wandb-metadata.json wandb-metadata.json
+2023-10-27 23:25:08,987 INFO    SenderThread:16476 [dir_watcher.py:finish():402] scan save: C:\Users\Drishti\calhacks_llm\VibeMaps\wandb\run-20231027_232505-dbrta906\files\wandb-summary.json wandb-summary.json
+2023-10-27 23:25:08,987 INFO    SenderThread:16476 [sender.py:transition_state():613] send defer: 10
+2023-10-27 23:25:08,987 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: poll_exit
+2023-10-27 23:25:08,987 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: defer
+2023-10-27 23:25:08,987 INFO    HandlerThread:16476 [handler.py:handle_request_defer():172] handle defer: 10
+2023-10-27 23:25:08,992 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: defer
+2023-10-27 23:25:08,997 INFO    SenderThread:16476 [sender.py:send_request_defer():609] handle sender defer: 10
+2023-10-27 23:25:08,997 INFO    SenderThread:16476 [file_pusher.py:finish():175] shutting down file pusher
+2023-10-27 23:25:09,267 INFO    wandb-upload_1:16476 [upload_job.py:push():131] Uploaded file C:\Users\Drishti\calhacks_llm\VibeMaps\wandb\run-20231027_232505-dbrta906\files\config.yaml
+2023-10-27 23:25:09,367 INFO    wandb-upload_0:16476 [upload_job.py:push():131] Uploaded file C:\Users\Drishti\calhacks_llm\VibeMaps\wandb\run-20231027_232505-dbrta906\files\requirements.txt
+2023-10-27 23:25:09,397 INFO    wandb-upload_2:16476 [upload_job.py:push():131] Uploaded file C:\Users\Drishti\calhacks_llm\VibeMaps\wandb\run-20231027_232505-dbrta906\files\wandb-summary.json
+2023-10-27 23:25:09,613 INFO    Thread-15 :16476 [sender.py:transition_state():613] send defer: 11
+2023-10-27 23:25:09,613 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: defer
+2023-10-27 23:25:09,614 INFO    HandlerThread:16476 [handler.py:handle_request_defer():172] handle defer: 11
+2023-10-27 23:25:09,615 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: defer
+2023-10-27 23:25:09,615 INFO    SenderThread:16476 [sender.py:send_request_defer():609] handle sender defer: 11
+2023-10-27 23:25:09,617 INFO    SenderThread:16476 [file_pusher.py:join():181] waiting for file pusher
+2023-10-27 23:25:09,617 INFO    SenderThread:16476 [sender.py:transition_state():613] send defer: 12
+2023-10-27 23:25:09,617 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: defer
+2023-10-27 23:25:09,617 INFO    HandlerThread:16476 [handler.py:handle_request_defer():172] handle defer: 12
+2023-10-27 23:25:09,618 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: defer
+2023-10-27 23:25:09,618 INFO    SenderThread:16476 [sender.py:send_request_defer():609] handle sender defer: 12
+2023-10-27 23:25:09,618 INFO    SenderThread:16476 [file_stream.py:finish():595] file stream finish called
+2023-10-27 23:25:09,707 INFO    SenderThread:16476 [file_stream.py:finish():599] file stream finish is done
+2023-10-27 23:25:09,707 INFO    SenderThread:16476 [sender.py:transition_state():613] send defer: 13
+2023-10-27 23:25:09,707 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: defer
+2023-10-27 23:25:09,707 INFO    HandlerThread:16476 [handler.py:handle_request_defer():172] handle defer: 13
+2023-10-27 23:25:09,712 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: defer
+2023-10-27 23:25:09,712 INFO    SenderThread:16476 [sender.py:send_request_defer():609] handle sender defer: 13
+2023-10-27 23:25:09,712 INFO    SenderThread:16476 [sender.py:transition_state():613] send defer: 14
+2023-10-27 23:25:09,712 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: defer
+2023-10-27 23:25:09,712 INFO    HandlerThread:16476 [handler.py:handle_request_defer():172] handle defer: 14
+2023-10-27 23:25:09,712 DEBUG   SenderThread:16476 [sender.py:send():380] send: final
+2023-10-27 23:25:09,712 DEBUG   SenderThread:16476 [sender.py:send():380] send: footer
+2023-10-27 23:25:09,712 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: defer
+2023-10-27 23:25:09,712 INFO    SenderThread:16476 [sender.py:send_request_defer():609] handle sender defer: 14
+2023-10-27 23:25:09,716 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: poll_exit
+2023-10-27 23:25:09,716 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: server_info
+2023-10-27 23:25:09,716 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: get_summary
+2023-10-27 23:25:09,716 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: poll_exit
+2023-10-27 23:25:09,716 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: sampled_history
+2023-10-27 23:25:09,716 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: server_info
+2023-10-27 23:25:09,716 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: internal_messages
+2023-10-27 23:25:09,727 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: job_info
+2023-10-27 23:25:09,792 DEBUG   SenderThread:16476 [sender.py:send_request():407] send_request: job_info
+2023-10-27 23:25:09,797 INFO    MainThread:16476 [wandb_run.py:_footer_history_summary_info():3599] rendering history
+2023-10-27 23:25:09,797 INFO    MainThread:16476 [wandb_run.py:_footer_history_summary_info():3631] rendering summary
+2023-10-27 23:25:09,797 INFO    MainThread:16476 [wandb_run.py:_footer_sync_info():3558] logging synced files
+2023-10-27 23:25:09,812 DEBUG   HandlerThread:16476 [handler.py:handle_request():146] handle_request: shutdown
+2023-10-27 23:25:09,812 INFO    HandlerThread:16476 [handler.py:finish():866] shutting down handler
+2023-10-27 23:25:10,732 INFO    WriterThread:16476 [datastore.py:close():294] close: C:\Users\Drishti\calhacks_llm\VibeMaps\wandb\run-20231027_232505-dbrta906\run-dbrta906.wandb
+2023-10-27 23:25:10,812 INFO    SenderThread:16476 [sender.py:finish():1534] shutting down sender
+2023-10-27 23:25:10,812 INFO    SenderThread:16476 [file_pusher.py:finish():175] shutting down file pusher
+2023-10-27 23:25:10,812 INFO    SenderThread:16476 [file_pusher.py:join():181] waiting for file pusher
