@@ -45,31 +45,27 @@ def get_musixmatch_track_id(track_name, artist_name, api_key):
     return None
 
 track_list = []
-file_name = "track_data.json"
+file_name = "track_data.jsonl"
 
 # Loop through tracks
-for track in results["items"]:
-    track_uri = track["track"]["uri"]
-    track_name = track["track"]["name"]
-    artist_name = track["track"]["artists"][0]["name"]
-    album = track["track"]["album"]["name"] 
-    track_pop = track["track"]["popularity"]
-    musixmatch_track_id = get_musixmatch_track_id(track_name, artist_name, api_key)
-    lyrics = get_lyrics(musixmatch_track_id, api_key)
+with open(file_name, "a") as jsonl_file:
+    # Loop through tracks
+    for track in results["items"]:
+        track_uri = track["track"]["uri"]
+        track_name = track["track"]["name"]
+        artist_name = track["track"]["artists"][0]["name"]
+        album = track["track"]["album"]["name"] 
+        track_pop = track["track"]["popularity"]
+        musixmatch_track_id = get_musixmatch_track_id(track_name, artist_name, api_key)
+        lyrics = get_lyrics(musixmatch_track_id, api_key)
 
-    track_info = {
-        "Track Name": track_name,
-        "Artist": artist_name,
-        "Album": album,
-        "Popularity": track_pop,
-        "Lyrics": lyrics,
-        "Audio Features": sp.audio_features(track_uri)[0]
-    }
+        track_info = {
+            "text": f"Track Name: {track_name}, Artist: {artist_name}, Album: {album}, Popularity: {track_pop}, Lyrics: {lyrics}",
+            "Audio Features": sp.audio_features(track_uri)[0]
+        }
 
-    if musixmatch_track_id:
-        track_list.append(track_info)
-    else:
-        print(f'Could not find Musixmatch track ID for {track_name} by {artist_name}')
-
-with open(file_name, "w") as json_file:
-    json.dump(track_list, json_file)
+        if musixmatch_track_id:
+            # Write the JSON object to the file
+            jsonl_file.write(json.dumps(track_info) + "\n")
+        else:
+            print(f'Could not find Musixmatch track ID for {track_name} by {artist_name}')
