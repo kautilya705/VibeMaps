@@ -32,12 +32,12 @@ interface RecentlyPlayedItem {
 
 
 type Props = {
-    onLoginSuccess: () => void;
+    setUserEmail: (email: string | null) => void;
 };
 
 const fileURI = FileSystem.documentDirectory + 'data.jsonl';
 
-export const SpotifyButton: React.FC<Props> = ({ onLoginSuccess }) => {
+export const SpotifyButton: React.FC<Props> = ({ setUserEmail }) => {
     const [recentlyPlayed, setRecentlyPlayed] = React.useState<RecentlyPlayedItem[]>([]);
 
     const [request, response, promptAsync] = useAuthRequest(
@@ -52,15 +52,11 @@ export const SpotifyButton: React.FC<Props> = ({ onLoginSuccess }) => {
         },
         discovery
     );
-    const [userEmail, setUserEmail] = React.useState("awer@app.com");
-
-    let testEmail = "test@app.com";
 
 
     React.useEffect(() => {
         if (response?.type === 'success') {
             const { code } = response.params;
-            onLoginSuccess();
             fetch(discovery.tokenEndpoint, {
                 method: 'POST',
                 headers: {
@@ -83,8 +79,7 @@ export const SpotifyButton: React.FC<Props> = ({ onLoginSuccess }) => {
                             const email = userData.email;
                             debugger;
                             setUserEmail(email);
-                            testEmail = email;
-                            return { accessToken, email, testEmail };
+                            return { accessToken, email };
                         })
                 })
                 // .then(({ accessToken, userEmail }) => {
@@ -111,19 +106,19 @@ export const SpotifyButton: React.FC<Props> = ({ onLoginSuccess }) => {
         }
     }, [response]);
 
-    React.useEffect(() => {
-        console.log('bruh', userEmail);
-    }, [userEmail]);
+    // React.useEffect(() => {
+    //     console.log('bruh', userEmail);
+    // }, [userEmail]);
 
     // CALL CONVEX TO UPLOAD DATA (username + list of songs)
     const songsList = recentlyPlayed.map(item => {
         return `${item.track.name} by ${item.track.artists.map(artist => artist.name).join(', ')}`;
     });
     // console.log("yo yo", userEmail, songsList)
-    const userData = {
-        email: userEmail,
-        songs: songsList
-    };
+    // const userData = {
+    //     email: userEmail,
+    //     songs: songsList
+    // };
     //if (userEmail && userEmail.trim() !== "" && songsList && songsList.length > 0) {
     // const mutateSomething = useMutation(api.tasks.uploadNewUser);
     // mutateSomething(userData)
@@ -138,9 +133,9 @@ export const SpotifyButton: React.FC<Props> = ({ onLoginSuccess }) => {
                 }}
             />
             {/* {getSpotifyEmail = testEmail} */}
-            {/* {console.log("yo yo", userEmail, songsList)} */}
+            {/* {console.log("yo yo", userEmail, testEmail)}
             {userEmail && <Text>Email: {userEmail}</Text>}
-            {testEmail && <Text>Email: {testEmail}</Text>}
+            {testEmail && <Text>Email: {testEmail}</Text>} */}
             {recentlyPlayed.length > 0 && (
                 <>
                     <Text>Recently Played Tracks:</Text>

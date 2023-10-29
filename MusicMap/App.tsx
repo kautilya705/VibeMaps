@@ -10,14 +10,13 @@ export default function App() {
   // const setIsLoggedIn = false;
   // console.log(setIsLoggedIn);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
 
 
   const showUserStuff = () => {
-    if (isLoggedIn === false) {
+    if (userEmail === null) {
       return (
-        <Auth onLoginSuccess={() => setIsLoggedIn(true)
-        } />
+        <Auth setUserEmail={setUserEmail} />
       )
     } else {
       return (
@@ -32,6 +31,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       {/* <Navbar /> */}
+
+      {userEmail}
 
       {showUserStuff()}
 

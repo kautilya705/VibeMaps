@@ -3,14 +3,14 @@ import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { SpotifyButton } from './SpotifyButton';
 
 type Props = {
-  onLoginSuccess: () => void;
+  setUserEmail: (email: string | null) => void;
 };
 
-const Auth: React.FC<Props> = ({ onLoginSuccess }) => {
+const Auth: React.FC<Props> = ({ setUserEmail }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <SpotifyButton onLoginSuccess={onLoginSuccess} />
+        <SpotifyButton setUserEmail={setUserEmail} />
       </View>
     </SafeAreaView>
   );
