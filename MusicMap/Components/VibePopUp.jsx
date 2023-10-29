@@ -22,7 +22,7 @@ const VibePopUp = () => {
           <View style={styles.vibingContainer}>
             <ScrollView style={{ width: '100%' }}>
               <Text style={styles.vibingText}>
-                You're vibing to some catchy and upbeat tunes that'll get you moving and grooving🦍🦍...safasfasfasfsafasfasdfasdfasfsadfsfasfs
+                You're vibing to some catchy and upbeat tunes that'll get you moving and grooving🦍🦍...
               </Text>
             </ScrollView>
           </View>

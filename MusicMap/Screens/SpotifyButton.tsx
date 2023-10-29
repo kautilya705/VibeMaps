@@ -14,10 +14,27 @@ import {
 } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import * as FileSystem from 'expo-file-system';
+WebBrowser.maybeCompleteAuthSession();
 
 type Props = {
     onLoginSuccess: () => void;
 };
+
+// Declaring the interfaces here
+interface Artist {
+    name: string;
+}
+
+interface Track {
+    name: string;
+    artists: Artist[];
+}
+
+interface RecentlyPlayedItem {
+    track: Track;
+}
+const fileURI = FileSystem.documentDirectory + 'data.jsonl';
 
 const SpotifyButton: React.FC<Props> = ({ onLoginSuccess }) => {
     const [isHovered, setHovered] = useState(false);
@@ -32,14 +49,14 @@ const SpotifyButton: React.FC<Props> = ({ onLoginSuccess }) => {
     const v = makeRedirectUri({
         scheme: 'VibeMaps-login://callback',
     })
-    console.log(v);
-    // export default function App() {
+
+    const [recentlyPlayed, setRecentlyPlayed] = React.useState<RecentlyPlayedItem[]>([]);
+
     const [request, response, promptAsync] = useAuthRequest(
         {
             clientId: 'bc62fd152f654b659bad4bf5b5c3a7fe',
-            scopes: ['user-read-email', 'playlist-modify-public'],
-            // To follow the "Authorization Code Flow" to fetch token after authorizationEndpoint
-            // this must be set to false
+            clientSecret: '1afd68b453994691975adc300e63ea2a',
+            scopes: ['user-read-email', 'user-read-recently-played'],
             usePKCE: false,
             redirectUri: makeRedirectUri({
                 scheme: 'VibeMaps-login://callback',
@@ -47,11 +64,67 @@ const SpotifyButton: React.FC<Props> = ({ onLoginSuccess }) => {
         },
         discovery
     );
+    const [userEmail, setUserEmail] = React.useState(null);
+    // React.useEffect(() => {
+    //     if (response?.type === 'success') {
+    //         const { code } = response.params;
+    //         onLoginSuccess();
 
+    //     }
+    // }, [response]);
     React.useEffect(() => {
         if (response?.type === 'success') {
             const { code } = response.params;
             onLoginSuccess();
+            console.log("Hits if statement");
+
+            fetch(discovery.tokenEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `client_id=bc62fd152f654b659bad4bf5b5c3a7fe&client_secret=1afd68b453994691975adc300e63ea2a&grant_type=authorization_code&code=${code}&redirect_uri=${makeRedirectUri({ scheme: 'VibeMaps-login://callback' })}`,
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const accessToken = data.access_token;
+
+                    // Fetch user's email
+                    return fetch('https://api.spotify.com/v1/me', {
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                    })
+                        .then(res => res.json())
+                        .then(userData => {
+                            const email = userData.email;
+                            setUserEmail(email);
+                            return { accessToken, email };
+                        })
+                })
+                .then(({ accessToken, userEmail }) => {
+                    // Use both accessToken and userEmail in this block
+
+                    // Fetch user's recently played tracks
+                    return fetch('https://api.spotify.com/v1/me/player/recently-played', {
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                    })
+                        .then(res => res.json())
+                        .then(recentlyPlayedData => {
+                            setRecentlyPlayed(recentlyPlayedData.items);
+
+                            // Append user's email and recently played tracks to the file
+                            const songs = recentlyPlayedData.items.map(item => item.track.name);
+                            // appendDataToFile(userEmail, songs);
+                            console.log("user email", userEmail);
+                            console.log("songs", songs);
+                        });
+                })
+                .catch(error => {
+                    console.error('Error:', error.message);
+                });
         }
     }, [response]);
 
