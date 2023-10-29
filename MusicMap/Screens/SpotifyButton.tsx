@@ -5,6 +5,8 @@ import { Button, Text } from 'react-native';
 import * as FileSystem from 'expo-file-system';
 import tasks from './convex/tasks';
 import { uploadNewUser } from '../convex/tasks';
+import { useMutation } from 'convex/react';
+import { api } from '../convex/_generated/api';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -69,7 +71,7 @@ export default function App() {
         },
         discovery
     );
-    const [userEmail, setUserEmail] = React.useState(null);
+    const [userEmail, setUserEmail] = React.useState("");
     React.useEffect(() => {
         if (response?.type === 'success') {
             const { code } = response.params;
@@ -126,8 +128,15 @@ export default function App() {
     const songsList = recentlyPlayed.map(item => {
         return `${item.track.name} by ${item.track.artists.map(artist => artist.name).join(', ')}`;
     });
-    
-    uploadNewUser(userEmail, songsList)
+    console.log("yo yo", userEmail, songsList)
+    const userData = {
+        email: userEmail,
+        songs: songsList
+      };
+    //if (userEmail && userEmail.trim() !== "" && songsList && songsList.length > 0) {
+    const mutateSomething = useMutation(api.tasks.uploadNewUser);
+    mutateSomething(userData)
+      //}
 
     return (
         <>

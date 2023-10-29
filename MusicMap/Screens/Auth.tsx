@@ -13,9 +13,11 @@ const convex = new ConvexReactClient(CONVEX_URL, {
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.content}>
-        <SpotifyButton />
-      </View>
+      <ConvexProvider client={convex}>
+        <View style={styles.content}>
+          <SpotifyButton />
+        </View>
+      </ConvexProvider>
     </SafeAreaView>
   );
 }
