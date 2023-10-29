@@ -45,7 +45,7 @@ def get_musixmatch_track_id(track_name, artist_name, api_key):
     return None
 
 track_list = []
-file_name = "track_data.jsonl"
+file_name = "track_data2.jsonl"
 
 # Loop through tracks
 def process_playlist(playlist_link, api_key, file_name):
@@ -63,8 +63,8 @@ def process_playlist(playlist_link, api_key, file_name):
             lyrics = get_lyrics(musixmatch_track_id, api_key)
 
             track_info = {
-                "text": f"Track Name: {track_name}, Artist: {artist_name}, Album: {album}, Popularity: {track_pop}, Lyrics: {lyrics}",
-                "Audio Features": sp.audio_features(track_uri)[0]
+                "text": f"Track Name: {track_name}, Artist: {artist_name}, Album: {album}, Popularity: {track_pop}, Lyrics: {lyrics}"#,
+                #"Audio Features": sp.audio_features(track_uri)[0]
             }
 
             if musixmatch_track_id:
@@ -73,17 +73,17 @@ def process_playlist(playlist_link, api_key, file_name):
                 print(f'Could not find Musixmatch track ID for {track_name} by {artist_name}')
 
 # Example usage:
-api_key = 'b279957df7339b654624d68bea207c77'
+api_key = '24c01d9f4d0dd7e84ee45dadb24876f1'
 playlist_links = [
-    "https://open.spotify.com/playlist/4GZT3MbZ4IwjtIxKuYerfu?si=e5256b6a87374b1d",
-    "https://open.spotify.com/playlist/4GZT3MbZ4IwjtIxKuYerfu?si=a0524174111a4b0f",
-    "https://open.spotify.com/playlist/37i9dQZF1DX6R7QUWePReA?si=8861b14157524c8e",
-    "https://open.spotify.com/playlist/37i9dQZF1DX2RxBh64BHjQ?si=06fe3eea377945ab",
-    "https://open.spotify.com/playlist/37i9dQZF1DX1lVhptIYRda?si=f08c5ae11b224bb0",
-    "https://open.spotify.com/playlist/37i9dQZEVXbNG2KDcFcKOF?si=80dd5d16f063409e"
+    "https://open.spotify.com/playlist/37i9dQZF1DXbQm6Guuzt5a?si=23083adb62364ebd",
+    "https://open.spotify.com/playlist/37i9dQZF1DX76Wlfdnj7AP?si=f6be8a017d4c4469",
+    "https://open.spotify.com/playlist/37i9dQZF1DWTLSN7iG21yC?si=64014ea3e3fe4c6f",
+    "https://open.spotify.com/playlist/37i9dQZF1DWSVpJBtEkFud?si=e4c4b25c5afe41f7",
+    "https://open.spotify.com/playlist/37i9dQZF1DX1lVhptIYRda?si=80486f36d4154f35",
+    "https://open.spotify.com/playlist/37i9dQZF1DX8C9xQcOrE6T?si=ce2633380a9747dd"
 ]
 
-file_name = "track_data.jsonl"
+file_name = "track_data2.jsonl"
 
 for playlist_link in playlist_links:
     process_playlist(playlist_link, api_key, file_name)

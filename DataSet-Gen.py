@@ -6,12 +6,10 @@ together.api_key = "2e96a353c02a9573abc5c69b846caa48c94b9a7a7206178243a72588641e
 import logging
 logger = logging.getLogger("datasetgen")
 
-grouped_inputs = []
-
-def extract_lyrics_from_file(file_path, grouped_inputs):
+def extract_lyrics_from_file(file_path):
+    grouped_inputs = []
     input_datasets = []
     counter = 0
-    
     with open(file_path, 'r') as file:
         for line in file:
             json_obj = json.loads(line)  
@@ -29,21 +27,21 @@ def extract_lyrics_from_file(file_path, grouped_inputs):
                     input_datasets = []
     return grouped_inputs
 
-def cook_randomly(file_path):
-
-
 # Path to the JSON file
 file_path = 'track_data.jsonl'
+file_path2 = 'track_data2.jsonl'
 file_name = 'llm_output.jsonl'
 # Extracting lyrics from the file
 lyrics_array = extract_lyrics_from_file(file_path)
+lyrics_array2 = extract_lyrics_from_file(file_path2)
+final_lyrics_array = lyrics_array + lyrics_array2
 #print(lyrics_array)
 
 system_prompt = "Create a generalized summary of these songs. Make sure it's written in a way that it's talking to the person that's listening to the songs. Like say that your vibe is xyz because of the characteristics that are in the song. Be creative, descriptive, and not specific to any one song. Don't mention any of the song names or artists. Be brief in your description. Include emojis. Make it a describe the people that would listen to the songs, rather than describe the songs themselves. Limit to one sentence!"
 final_dataset = []
 
 import time
-for input in lyrics_array:
+for input in final_lyrics_array:
     finished = False
     try_num = 0
 
