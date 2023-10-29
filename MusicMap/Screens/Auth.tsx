@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
-import SpotifyButton from './SpotifyButton';
+import { SpotifyButton } from './SpotifyButton';
 
 type Props = {
   onLoginSuccess: () => void;
