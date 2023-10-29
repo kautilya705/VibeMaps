@@ -17,11 +17,16 @@ const VibePopUp = () => {
 
         <View style={styles.heading}>
           <Text style={styles.title}>Today's Vibez</Text>
-          <Image
-            source={require("../assets/healing-img.png")}
-            style={styles.Image}
-          />
-          <Text style={styles.text}>Soothing and Healing</Text>
+          <Image source={require("../assets/healing-img.png")} style={styles.Image} />
+
+          <View style={styles.vibingContainer}>
+            <ScrollView style={{ width: '100%' }}>
+              <Text style={styles.vibingText}>
+                You're vibing to some catchy and upbeat tunes that'll get you moving and grooving🦍🦍...safasfasfasfsafasfasdfasdfasfsadfsfasfs
+              </Text>
+            </ScrollView>
+          </View>
+          {/* <Text style={styles.subtitle}>Keep your vibe going</Text> */}
         </View>
         {/* This is the music list component, once we get the data we can create a different component and send the image, name and artist as props */}
         <View style={styles.musicCardContainer}>
@@ -328,5 +333,17 @@ const styles = StyleSheet.create({
   musicTextsub: {
     color: "white",
     fontSize: 12,
+  },
+  vibingContainer: {
+    marginVertical: 10,
+    paddingHorizontal: 10,
+    maxHeight: 100, // Adjust this to the height you want
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  vibingText: {
+    textAlign: 'center',
+    // Add any other styling you want for the text here
   },
 });
